@@ -16,13 +16,16 @@ class UserType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom'
+                'label' => 'Nom',
+                'attr' => ['class' => 'border rounded p-2 w-full'], // Classes Tailwind
             ])
             ->add('email', TextType::class, [
-                'label' => 'Email'
+                'label' => 'Email',
+                'attr' => ['class' => 'border rounded p-2 w-full'], // Classes Tailwind
             ])
             ->add('password', PasswordType::class, [
-                'label' => 'Mot de passe'
+                'label' => 'Mot de passe',
+                'attr' => ['class' => 'border rounded p-2 w-full'], // Classes Tailwind
             ])
             ->add('roles', ChoiceType::class, [
                 'choices' => [
@@ -31,11 +34,13 @@ class UserType extends AbstractType
                 ],
                 'multiple' => true,
                 'expanded' => true,
-                'label' => 'Rôles'
+                'label' => 'Rôles',
+                'attr' => ['class' => 'border rounded p-2 w-full'], // Classes Tailwind
             ])
             ->add('phoneNumber', TextType::class, [
                 'label' => 'Numéro de téléphone',
-                'required' => false
+                'required' => false,
+                'attr' => ['class' => 'border rounded p-2 w-full'], // Classes Tailwind
             ])
         ;
     }

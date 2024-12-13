@@ -21,7 +21,7 @@
             <tr class="border-b">
                 <td class="py-2 px-4">{{ booking.id }}</td>
                 <td class="py-2 px-4">{{ booking.date ? booking.date|date('Y-m-d') : '' }}</td>
-                <td class="py-2 px-4">{{ booking.timeSlot ? booking.timeSlot|date('Y-m-d H:i:s') : '' }}</td>
+                <td class="py-2 px-4">{{ booking.timeSlot ? booking.timeSlot|date('H:i:s') : '' }}</td>
                 <td class="py-2 px-4">{{ booking.eventName }}</td>
                 <td class="py-2 px-4">{{ booking.user.name }}</td>
                 <td class="py-2 px-4">
