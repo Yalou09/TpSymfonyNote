@@ -35,12 +35,12 @@ class User
     /**
      * @var Collection<int, Booking>
      */
-    #[ORM\OneToMany(targetEntity: Booking::class, mappedBy: 'name')]
-    private Collection $booking;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Booking::class)]
+    private Collection $bookings;
 
     public function __construct()
     {
-        $this->booking = new ArrayCollection();
+        $this->bookings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -113,16 +113,16 @@ class User
     /**
      * @return Collection<int, Booking>
      */
-    public function getBooking(): Collection
+    public function getBookings(): Collection
     {
-        return $this->booking;
+        return $this->bookings;
     }
 
     public function addBooking(Booking $booking): static
     {
-        if (!$this->booking->contains($booking)) {
-            $this->booking->add($booking);
-            $booking->setName($this);
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings->add($booking);
+            $booking->setUser($this);
         }
 
         return $this;
@@ -130,10 +130,9 @@ class User
 
     public function removeBooking(Booking $booking): static
     {
-        if ($this->booking->removeElement($booking)) {
-            // set the owning side to null (unless already changed)
-            if ($booking->getName() === $this) {
-                $booking->setName(null);
+        if ($this->bookings->removeElement($booking)) {
+            if ($booking->getUser() === $this) {
+                $booking->setUser(null);
             }
         }
 

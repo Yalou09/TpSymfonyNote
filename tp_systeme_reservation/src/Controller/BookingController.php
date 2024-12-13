@@ -17,11 +17,6 @@ final class BookingController extends AbstractController
     #[Route(name: 'app_booking_index', methods: ['GET'])]
     public function index(BookingRepository $bookingRepository): Response
     {
-        // Vérifie si l'utilisateur a le rôle ROLE_USER
-        if (!$this->isGranted('ROLE_USER')) {
-            throw $this->createAccessDeniedException('Accès refusé.');
-        }
-
         return $this->render('booking/index.html.twig', [
             'bookings' => $bookingRepository->findAll(),
         ]);
@@ -30,11 +25,6 @@ final class BookingController extends AbstractController
     #[Route('/new', name: 'app_booking_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        // Vérifie si l'utilisateur a le rôle ROLE_USER
-        if (!$this->isGranted('ROLE_USER')) {
-            throw $this->createAccessDeniedException('Accès refusé.');
-        }
-
         $booking = new Booking();
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
@@ -55,11 +45,6 @@ final class BookingController extends AbstractController
     #[Route('/{id}', name: 'app_booking_show', methods: ['GET'])]
     public function show(Booking $booking): Response
     {
-        // Vérifie si l'utilisateur a le rôle ROLE_USER
-        if (!$this->isGranted('ROLE_USER')) {
-            throw $this->createAccessDeniedException('Accès refusé.');
-        }
-
         return $this->render('booking/show.html.twig', [
             'booking' => $booking,
         ]);
@@ -68,11 +53,6 @@ final class BookingController extends AbstractController
     #[Route('/{id}/edit', name: 'app_booking_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Booking $booking, EntityManagerInterface $entityManager): Response
     {
-        // Vérifie si l'utilisateur a le rôle ROLE_USER
-        if (!$this->isGranted('ROLE_USER')) {
-            throw $this->createAccessDeniedException('Accès refusé.');
-        }
-
         $form = $this->createForm(BookingType::class, $booking);
         $form->handleRequest($request);
 
@@ -91,11 +71,6 @@ final class BookingController extends AbstractController
     #[Route('/{id}', name: 'app_booking_delete', methods: ['POST'])]
     public function delete(Request $request, Booking $booking, EntityManagerInterface $entityManager): Response
     {
-        // Vérifie si l'utilisateur a le rôle ROLE_USER
-        if (!$this->isGranted('ROLE_USER')) {
-            throw $this->createAccessDeniedException('Accès refusé.');
-        }
-
         if ($this->isCsrfTokenValid('delete' . $booking->getId(), $request->request->get('_token'))) {
             $entityManager->remove($booking);
             $entityManager->flush();

@@ -23,9 +23,9 @@ class Booking
     #[ORM\Column(length: 255)]
     private ?string $eventName = null;
 
-    #[ORM\ManyToOne(inversedBy: 'booking')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'bookings')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $name = null;
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -68,14 +68,14 @@ class Booking
         return $this;
     }
 
-    public function getName(): ?User
+    public function getUser(): ?User
     {
-        return $this->name;
+        return $this->user;
     }
 
-    public function setName(?User $name): static
+    public function setUser(?User $user): static
     {
-        $this->name = $name;
+        $this->user = $user;
 
         return $this;
     }
