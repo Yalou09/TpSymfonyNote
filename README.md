@@ -1,13 +1,5 @@
 # Tp Noté Symfony Yaëlle Jehu
 
-## Introduction
-
-Ce projet Symfony est conçu pour gérer les utilisateurs et les réservations avec une interface moderne stylisée avec Tailwind CSS.
-
-D'accord, voici la version mise à jour :
-
-markdown
-# Tp Noté Symfony
 
 ## Introduction
 
