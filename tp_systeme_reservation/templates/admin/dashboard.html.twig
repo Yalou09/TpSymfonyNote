@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Booking index{% endblock %}
+
+{% block body %}
+
+<html>
+<head>
+    <title>Tableau de Bord</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+</head>
+<body>
+    <h1>Tableau de Bord</h1>
+    <ul>
+        <li>
+            <a href="{{ path('app_booking_index') }}">Gérer les Réservations</a>
+        </li>
+        <li>
+            <a href="{{ path('app_user_index') }}">Gérer les Utilisateurs</a>
+        </li>
+    </ul>
+</body>
+</html>
+
+{% endblock %}
