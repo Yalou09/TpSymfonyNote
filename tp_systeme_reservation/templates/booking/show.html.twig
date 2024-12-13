@@ -3,32 +3,35 @@
 {% block title %}Booking{% endblock %}
 
 {% block body %}
-    <h1>Booking</h1>
+    <h1 class="text-3xl font-bold mb-6">Booking</h1>
 
-    <table class="table">
+    <table class="min-w-full bg-white">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ booking.id }}</td>
+            <tr class="border-b">
+                <th class="w-1/4 py-2 px-4 text-left">Id</th>
+                <td class="py-2 px-4">{{ booking.id }}</td>
             </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ booking.date ? booking.date|date('Y-m-d') : '' }}</td>
+            <tr class="border-b">
+                <th class="w-1/4 py-2 px-4 text-left">Date</th>
+                <td class="py-2 px-4">{{ booking.date ? booking.date|date('Y-m-d') : '' }}</td>
             </tr>
-            <tr>
-                <th>TimeSlot</th>
-                <td>{{ booking.timeSlot ? booking.timeSlot|date('Y-m-d H:i:s') : '' }}</td>
+            <tr class="border-b">
+                <th class="w-1/4 py-2 px-4 text-left">TimeSlot</th>
+                <td class="py-2 px-4">{{ booking.timeSlot ? booking.timeSlot|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
-            <tr>
-                <th>EventName</th>
-                <td>{{ booking.eventName }}</td>
+            <tr class="border-b">
+                <th class="w-1/4 py-2 px-4 text-left">EventName</th>
+                <td class="py-2 px-4">{{ booking.eventName }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_booking_index') }}">back to list</a>
+    <div class="mt-4">
+        <a href="{{ path('app_booking_index') }}" class="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Back to list</a>
+        <a href="{{ path('app_booking_edit', {'id': booking.id}) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Edit</a>
+    </div>
 
-    <a href="{{ path('app_booking_edit', {'id': booking.id}) }}">edit</a>
-
-    {{ include('booking/_delete_form.html.twig') }}
+    <div class="mt-4">
+        {{ include('booking/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

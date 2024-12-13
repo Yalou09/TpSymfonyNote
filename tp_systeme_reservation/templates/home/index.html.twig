@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-6">Welcome to My Symfony App</h1>
+        <ul class="list-disc pl-5 space-y-2">
+            <li>
+                <a href="{{ path('app_booking_index') }}" class="text-blue-500 hover:text-blue-700">Manage Bookings</a>
+            </li>
+            <li>
+                <a href="{{ path('app_user_index') }}" class="text-blue-500 hover:text-blue-700">Manage Users</a>
+            </li>
+            <li>
+                <a href="{{ path('app_booking_new') }}" class="text-blue-500 hover:text-blue-700">Create Booking</a>
+            </li>
+            <li>
+                <a href="{{ path('app_user_new') }}" class="text-blue-500 hover:text-blue-700">Create User</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

@@ -19,14 +19,19 @@ class BookingType extends AbstractType
         $builder
             ->add('date', DateType::class, [
                 'widget' => 'single_text',
+                'attr' => ['class' => 'border rounded p-2 w-full'], // Classes Tailwind
             ])
             ->add('timeSlot', DateTimeType::class, [
                 'widget' => 'single_text',
+                'attr' => ['class' => 'border rounded p-2 w-full'], // Classes Tailwind
             ])
-            ->add('eventName', TextType::class)
+            ->add('eventName', TextType::class, [
+                'attr' => ['class' => 'border rounded p-2 w-full'], // Classes Tailwind
+            ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'username', // or 'name' if you want to use the name property
+                'choice_label' => 'name', // or 'name' if you want to use the name property
+                'attr' => ['class' => 'border rounded p-2 w-full'], // Classes Tailwind
             ])
         ;
     }
